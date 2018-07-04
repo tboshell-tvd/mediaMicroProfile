@@ -4,11 +4,16 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Schema(name = "ImageInformation", description = "Contains meta information about an image")
 @XmlRootElement
 public class ImageInformation {
 	static final int VERSION = 1;
 	// TODO: find something for this
-	// @JsonIgnore // ignored by Jackson for REST, but not for local
+	@JsonIgnore // ignored by Jackson for REST, but not for local
 	// Cache/Persistence
 	int version = 0;
 	private String name;
@@ -32,7 +37,7 @@ public class ImageInformation {
 	}
 
 	// TODO find something for this
-	// @JsonIgnore
+	@JsonIgnore
 	public boolean isCurrent() {
 		return version == VERSION;
 	}

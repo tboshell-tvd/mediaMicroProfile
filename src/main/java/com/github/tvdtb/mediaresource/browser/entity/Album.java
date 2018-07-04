@@ -3,6 +3,9 @@ package com.github.tvdtb.mediaresource.browser.entity;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+@Schema(name = "Album", description = "Represents a directory, here termed Album")
 public class Album {
 
 	private String name;

@@ -2,6 +2,9 @@ package com.github.tvdtb.mediaresource.browser.entity;
 
 import java.util.List;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+@Schema(name = "Alba", description = "The root directory representation")
 public class Alba {
 	String defaultAlbumName;
 	List<Album> alba;

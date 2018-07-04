@@ -84,14 +84,9 @@ public class BrowserResource {
 	}
 
 	private FolderInformation readItems(Album a, String path, boolean parent) {
-
 		FolderInformation folder = boundary.readFolder(a, path);
 
-		folder.getFolders()//
-				.sort((first, second) -> //
-		-1 * first.getName()//
-				.compareTo(//
-						second.getName()));
+		folder.getFolders().sort((first, second) -> -1 * first.getName().compareTo(second.getName()));
 
 		return folder;
 	}
@@ -104,12 +99,12 @@ public class BrowserResource {
 		return skip;
 	}
 
-	private String concatPath(String path, String name) {
-		if (path.length() == 0 || path.endsWith("/") || name.startsWith("/"))
-			return path + name;
-		else
-			return path + "/" + name;
-	}
+	// private String concatPath(String path, String name) {
+	// if (path.length() == 0 || path.endsWith("/") || name.startsWith("/"))
+	// return path + name;
+	// else
+	// return path + "/" + name;
+	// }
 
 	@APIResponse(responseCode = "200", description = "getMedia", content = @Content(mediaType = MediaType.APPLICATION_JSON))
 	@GET

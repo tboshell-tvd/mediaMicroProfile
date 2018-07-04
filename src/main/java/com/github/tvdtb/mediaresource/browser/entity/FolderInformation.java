@@ -2,19 +2,20 @@ package com.github.tvdtb.mediaresource.browser.entity;
 
 import java.util.List;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.fasterxml.jackson.annotation.JsonInclude;
-//import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-//TODO: need something else
-//@JsonInclude(Include.NON_EMPTY)
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_EMPTY)
+@Schema(name = "FolderInformation", description = "What it says, has information about a folder")
 public class FolderInformation {
 	static final int VERSION = 3;
 
 	private String name;
 	private String path;
-	// @JsonIgnore // ignored by Jackson for REST, but not for local
-	// Cache/Persistence
+	@JsonIgnore // ignored by Jackson for REST, but not for local Cache/Persistence
 	private int version;
 
 	private List<FolderInformation> folders;
@@ -31,7 +32,7 @@ public class FolderInformation {
 		this.path = path;
 	}
 
-	// @JsonIgnore
+	@JsonIgnore
 	public boolean isCurrent() {
 		return version == VERSION;
 	}

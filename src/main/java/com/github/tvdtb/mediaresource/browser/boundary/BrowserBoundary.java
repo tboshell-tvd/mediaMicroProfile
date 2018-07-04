@@ -35,20 +35,20 @@ public class BrowserBoundary {
 	@Inject
 	ImageProcessingControl imageProcessing;
 
-	@Counted(name = "ReadAlba", description = "count the time reading all the albums takes")
+	@Counted(name = "ReadAlba", description = "count the time reading all the albums takes", reusable = true)
 	public List<Album> readAlba() {
 		// simple delegation due to multiple implementations
 		return albumPersistence.getAlba();
 	}
 
-	@Counted(name = "readAlbum", description = "count the times specific albums are called")
+	@Counted(name = "readAlbum", description = "count the times specific albums are called", reusable = true)
 	public Album readAlbum(String name) {
 		// simple delegation due to multiple implementations
 		return albumPersistence.getAlbum(name);
 	}
 
-	@Timed(name = "readFolder", description = "Reading the given album's folder info")
-	@Counted(name = "readFolder", description = "count the times folder method is called")
+	@Timed(name = "readFolder", description = "Reading the given album's folder info", reusable = true)
+	@Counted(name = "readFolderCnt", description = "count the times folder method is called", reusable = true)
 	public FolderInformation readFolder(Album album, final String path) {
 
 		FolderInformation result = imagePersistence.readFolderInfo(album, path);
@@ -95,8 +95,8 @@ public class BrowserBoundary {
 		return path != null && path.startsWith("/");
 	}
 
-	@Timed(name = "readImage", description = "Time the reading of a image")
-	@Counted(name = "readImage", description = "count the times imagereading method is called")
+	@Timed(name = "readImage", description = "Time the reading of a image", reusable = true)
+	@Counted(name = "readImageCnt", description = "count the times imagereading method is called", reusable = true)
 	public StreamDto readImage(Album album, String path, String imageName//
 			, ImageSize desiredSize) throws IOException {
 
