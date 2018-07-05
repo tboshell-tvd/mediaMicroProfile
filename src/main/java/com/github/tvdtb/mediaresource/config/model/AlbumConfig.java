@@ -13,7 +13,7 @@ import com.github.tvdtb.mediaresource.browser.entity.Album;
 public class AlbumConfig {
 
 	@Inject
-	@ConfigProperty(name = "album.dirFilter") // TODO: the property name
+	@ConfigProperty(name = "album.dirFilter")
 	String dirFilter;
 
 	String cacheDirPattern;

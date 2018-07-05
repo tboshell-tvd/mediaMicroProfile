@@ -8,23 +8,16 @@ import javax.inject.Inject;
 
 import org.apache.commons.imaging.util.IoUtils;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.slf4j.Logger;
 
 import com.alibaba.fastjson.JSON;
 import com.github.tvdtb.mediaresource.config.model.Configuration;
 
-//@Component
-//@ConfigurationProperties("application")
 @ApplicationScoped
 public class ConfigControl {
 
 	@Inject
-	Logger logger;
-	// @Inject
-	// private Config microConfig; // TODO: hhhmmm...?
-	@Inject
 	@ConfigProperty(name = "application.config")
-	String config; // This is null, needs to come from the config
+	String config;
 
 	@Inject
 	@ConfigProperty(name = "user.home")
@@ -47,10 +40,7 @@ public class ConfigControl {
 			json = readFile(config.replace("${user.home}", userHome).substring(5));
 		}
 
-		logger.warn(json);
-
 		configuration = JSON.parseObject(json, Configuration.class);
-		logger.warn("  ***  configuration:" + configuration + "  " + configuration.getAlbum());
 	}
 
 	private String readFile(String fileName) {

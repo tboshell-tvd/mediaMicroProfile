@@ -37,7 +37,7 @@ public class BrowserResource {
 	BrowserBoundary boundary;
 
 	@APIResponse(responseCode = "200", description = "getAlba", content = @Content(mediaType = MediaType.APPLICATION_JSON))
-	@Operation(summary = "gets the top-level description of the albums", description = "gets the top-level description of the albums")
+	@Operation(summary = "gets the top-level description of the albums", description = "gets the top-level description of the albums", operationId = "Get_Alba")
 	@GET
 	@Path("/alba/")
 	public Response getAlba() {
@@ -50,6 +50,7 @@ public class BrowserResource {
 	}
 
 	@APIResponse(responseCode = "200", description = "getAlbum for the given value", content = @Content(mediaType = MediaType.APPLICATION_JSON))
+	@Operation(operationId = "Get_Album", summary = "Gets a specfic album", description = "retrieves a specific album")
 	@GET
 	@Path("/alba/{album}")
 	public Response getAlbum(@PathParam("album") String album //
@@ -63,6 +64,7 @@ public class BrowserResource {
 	}
 
 	@APIResponse(responseCode = "200", description = "browse Folder", content = @Content(mediaType = MediaType.APPLICATION_JSON))
+	@Operation(operationId = "browse_Folder", summary = "The folder information", description = "Builds the folder's information")
 	@GET
 	@Path("/alba/{album}/{path:.*}")
 	public Response browseFolder(@PathParam("album") String album //
@@ -107,6 +109,7 @@ public class BrowserResource {
 	// }
 
 	@APIResponse(responseCode = "200", description = "getMedia", content = @Content(mediaType = MediaType.APPLICATION_JSON))
+	@Operation(operationId = "get_Media", summary = "gets a specific item", description = "Retrieves the given image")
 	@GET
 	@Path("/alba/{album}/{path:.*}/{imageName}/{type}")
 	public Response getMedia(//
