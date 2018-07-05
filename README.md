@@ -17,7 +17,7 @@ A simple photo gallery microservice/HTML5 application, this version's backend is
 Completed
 
 ## Architecture
-Simple Spring Boot REST service.
+Eclipse microservice gased endpoints.
 
 HTML5 frontend
 
@@ -27,23 +27,6 @@ Json Web Tokens for Authentication
 
 Java Imaging APIs, FASTJson 
 
-## HAL
-The frontend relies on links calculated by backend data using a static json definition for the formerly created HAL/HATEOAS links
-
-   ```json
-   {
-    "_links": {
-        "alba":{"method":"GET","href":"/media/api/browser/alba/"}
-
-        , "albumRoot":{"method":"GET","href":"/media/api/browser/alba/{album}/"}
-        , "folder":{"method":"GET","href":"/media/api/browser/alba/{album}/{folderPath}/"}
-
-        , "imageIcon":{"method":"GET","href":"/media/api/browser/alba/{album}/{imagePath}/{image}/ICON"}
-        , "imagePreview":{"method":"GET","href":"/media/api/browser/alba/{album}/{imagePath}/{image}/PREVIEW"}
-        
-    }
-   }
-   ```
 
 
 
@@ -72,6 +55,10 @@ Build project
    ```
    mvn package
    ```
+   or build and run the server
+   ```   
+   mvn package liberty:run-server
+   ```   
 
 
 
@@ -92,7 +79,17 @@ To stop the server:
    ```
 	mvn liberty:stop-server
    ```
-(or use eclipse)
+(or use eclipse and the liberty server plugin)
+
+http://localhost:8080/   --> GUI
+http://localhost:8080/openapi  --> plain text openapi representation
+http://localhost:8080/openapi/ui  --> nice html version of the openapi version 3
+http://localhost:8080/health  --> example health report
+https://localhost:8080/metrics  --> metrics report
+
+#### Server Config
+The server configuration is located at /media/src/main/liberty/config/server.xml
+This also includes the enablement of each feature.
    
 UI:
 
